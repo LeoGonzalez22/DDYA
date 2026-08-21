@@ -1,0 +1,46 @@
+def insertion_sortOD(tab):
+    for j in range(1,len(tab)):
+        key = tab[j]
+        i = j - 1
+
+        while i >= 0 and tab[i] < key:
+                tab[i + 1] = tab[i]
+                i = i - 1
+        tab[i + 1] = key
+
+    return tab
+
+def insertion_sortOA(tab):
+    for j in range(1, len(tab)):
+        key = tab[j]
+        i = j - 1
+
+        while i >= 0 and tab[i] > key:
+                tab[i + 1] = tab[i]
+                i = i - 1
+
+        tab[i + 1] = key
+    return tab
+
+def main():   
+    n=int(input("Cantidad de productos (Valor NUMERICO enterio ): "))
+    if n<0:
+        print("Valor no Valido")
+    else:
+        print("Valor valido, Valor guardado")
+    tab=[] 
+    for i in range(n):
+        valor=int(input("Valor producto: "))
+        tab.append(valor)
+
+    print("Orden Ascendente =OA | Orden Descendente= OD")
+    ele=input("Seleccione su tipo de orden: ").upper()
+
+    if ele=="OD":
+         tab=insertion_sortOD(tab)
+         print(tab)
+    elif ele=="OA":
+        tab=insertion_sortOA(tab)
+        print(tab)
+
+main()
