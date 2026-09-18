@@ -1,4 +1,4 @@
-def pedir_entero(mensaje):
+def cantidad(mensaje):
     while True:
         try:
             numero = int(input(mensaje))
@@ -14,14 +14,14 @@ def mostrar_clientes(clientes):
         print("Clientes esperando:", " -> ".join(clientes))
 
 
-def agregar_cliente(clientes):
+def agr_cliente(clientes):
     nuevo = input("Ingrese el nuevo cliente: ")
     clientes.append(nuevo)
     print("Cliente agregado.")
     mostrar_clientes(clientes)
 
 
-def atender_cliente(clientes, atendidos):
+def atend_cliente(clientes, atendidos):
     if len(clientes) == 0:
         print("No hay clientes esperando.")
     else:
@@ -39,7 +39,7 @@ def mostrar_ultimo_atendido(atendidos):
         print("Ultimo cliente atendido:", atendidos[-1])   # peek
 
 
-def deshacer_atencion(clientes, atendidos):
+def eliminar_at(clientes, atendidos):
     if len(atendidos) == 0:
         print("No hay atenciones para deshacer.")
     else:
@@ -52,7 +52,7 @@ def deshacer_atencion(clientes, atendidos):
 
 
 def agregar_producto(productos):
-    codigo = pedir_entero("Ingrese el codigo: ")
+    codigo = cantidad("Ingrese el codigo: ")
 
     for i in range(len(productos)):
         if productos[i][0] == codigo:
@@ -60,7 +60,7 @@ def agregar_producto(productos):
             return
 
     nombre = input("Ingrese el nombre: ")
-    precio = pedir_entero("Ingrese el precio: ")
+    precio = cantidad("Ingrese el precio: ")
 
     producto = [codigo, nombre, precio]
     productos.append(producto)
@@ -89,7 +89,7 @@ def mostrar_productos_reves(productos):
 
 
 def buscar_producto(productos):
-    codigo = pedir_entero("Ingrese el codigo que desea buscar: ")
+    codigo = cantidad("Ingrese el codigo que desea buscar: ")
     encontrado = False
 
     for i in range(len(productos)):
@@ -104,7 +104,7 @@ def buscar_producto(productos):
 
 
 def eliminar_producto(productos):
-    codigo = pedir_entero("Ingrese el codigo que desea eliminar: ")
+    codigo = cantidad("Ingrese el codigo que desea eliminar: ")
     encontrado = False
 
     for i in range(len(productos)):
@@ -122,7 +122,7 @@ clientes = []
 atendidos = []
 productos = []
 
-n = pedir_entero("Numero de clientes: ")
+n = cantidad("Numero de clientes: ")
 
 for i in range(n):
     c = input("Ingrese el nombre del cliente: ")
@@ -143,13 +143,13 @@ while True:
     print("10. Eliminar producto")
     print("0. Salir")
 
-    opcion = pedir_entero("Seleccione una opcion: ")
+    opcion = cantidad("Seleccione una opcion: ")
 
     if opcion == 1:
-        agregar_cliente(clientes)
+        agr_cliente(clientes)
 
     elif opcion == 2:
-        atender_cliente(clientes, atendidos)
+        atend_cliente(clientes, atendidos)
 
     elif opcion == 3:
         mostrar_clientes(clientes)
@@ -158,7 +158,7 @@ while True:
         mostrar_ultimo_atendido(atendidos)
 
     elif opcion == 5:
-        deshacer_atencion(clientes, atendidos)
+        eliminar_at(clientes, atendidos)
 
     elif opcion == 6:
         agregar_producto(productos)
